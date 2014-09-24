@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.udiga.ddt.app.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="DDT Perspective"
+            class="org.udiga.ddt.view.Perspective"
+            id="ddt.views.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="ddt.views.category"
+            class="org.udiga.ddt.view.NavigatorView"
+            id="ddt.views.navigator"
+            name="Navigator"
+            restorable="true">
+      </view>
+      <category
+            id="ddt.views.category"
+            name="DDT Category">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="ddt.views.navigator">
+      </viewer>
+      <viewerContentBinding
+            viewerId="ddt.views.navigator">
+         <includes>
+            <contentExtension
+                  pattern="ddt.navigator.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="ddt.navigator.EmpContentProvider"
+            id="ddt.navigator.empContent"
+            labelProvider="ddt.navigator.EmpLabelProvider"
+            name="Emp content">
+         <enablement>
+            <instanceof
+                  value="ddt.model.IModelElement">
+            </instanceof>
+         </enablement>
+      </navigatorContent>
+   </extension>
+
+</plugin>
