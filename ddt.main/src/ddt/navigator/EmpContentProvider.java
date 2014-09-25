@@ -1,20 +1,14 @@
 package ddt.navigator;
 
-import org.eclipse.core.internal.runtime.Log;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.equinox.log.Logger;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import javax.inject.Inject;
-
 import ddt.model.IModelElement;
+import ddt.model.Model;
 import ddt.model.Root;
 
 public class EmpContentProvider implements ITreeContentProvider {
 	
-	@Inject Logger logger;
-
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
@@ -29,16 +23,15 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		logger.log(IStatus.ERROR,"Зашёл в getElements()");
-		System.out.println("Зашёл в getElements()");
+		System.out.println("EmpContentProvider.getElements():"+inputElement);
 		return getChildren(inputElement);
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		System.out.println("Зашёл в getChildren()");
+		System.out.println("EmpContentProvider.getChildren():"+parentElement);
 		if(parentElement instanceof Root){
-			((Root) parentElement).getChildren();
+			return Model.getRootContent();
 		}else if(parentElement instanceof IModelElement){
 			return ((IModelElement)parentElement).getChildren();
 		}
@@ -47,7 +40,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
-		System.out.println("Зашёл в getParent()");
+		System.out.println("EmpContentProvider.getParent():"+element);
 		if(element instanceof IModelElement){
 			return ((IModelElement)element).getParent();
 		}
@@ -56,11 +49,11 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		System.out.println("Зашёл в hasChildren()");
+		System.out.println("EmpContentProvider.hasChildren():"+element);
 		if(element instanceof Root){
 			return true;
 		}else if(element instanceof IModelElement){
-			return ((IModelElement)element).getChildren().length > 0;
+			return ((IModelElement)element).hasChildren();
 		}
 		return false;
 	}

@@ -4,14 +4,27 @@ public class Person implements IModelElement {
 	private String fname;
 	private String mname;
 	private String lname;
+	
 	@Override
 	public IModelElement getParent() {
 		return null;
 	}
+	
+	@Override
+	public void setParent(IModelElement parent) {
+
+	}
+
 	@Override
 	public IModelElement[] getChildren() {
 		return null;
 	}
+
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
+	
 	public String getFname() {
 		return fname;
 	}
@@ -44,5 +57,9 @@ public class Person implements IModelElement {
 		return getFullName();
 	}
 	
+	@Override
+	public String toString() {
+		return "PERS:" + getFullName();
+	}
 	
 }

@@ -2,8 +2,11 @@ package ddt.model;
 
 public class Model {
 
+	private static IModelElement[] rootContent = null;
+	
 	public static Dept getDeptTree() {
 		
+		System.out.println("Generate Model...");
 		Dept d = new Dept("ДДТ");
 		
 		Dept d1 = new Dept("Департ №1");
@@ -44,7 +47,11 @@ public class Model {
 		return d;
 	}
 
-	
-	
-	
+	public static IModelElement[] getRootContent() {
+		Dept rootDept =  getDeptTree();
+		if(rootContent == null){
+			rootContent = new IModelElement[] {rootDept};
+		}
+		return rootContent;
+	}
 }

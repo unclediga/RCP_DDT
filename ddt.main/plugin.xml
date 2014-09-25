@@ -54,11 +54,16 @@
             id="ddt.navigator.empContent"
             labelProvider="ddt.navigator.EmpLabelProvider"
             name="Emp content">
-         <enablement>
-            <instanceof
-                  value="ddt.model.IModelElement">
-            </instanceof>
-         </enablement>
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="ddt.model.IModelElement">
+               </instanceof>
+               <instanceof
+                     value="ddt.model.Root">
+               </instanceof>
+            </or>
+         </triggerPoints>
       </navigatorContent>
    </extension>
 
