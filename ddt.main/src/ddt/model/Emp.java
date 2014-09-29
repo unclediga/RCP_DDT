@@ -25,10 +25,10 @@ public class Emp implements IModelElement {
 	public void setParent(IModelElement parent) {
 		this.parent = parent;
 	}
-	
+
 	@Override
 	public IModelElement[] getChildren() {
-		return new IModelElement[]{person};
+		return new IModelElement[] { person };
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class Emp implements IModelElement {
 
 	@Override
 	public String getLabel() {
-		return person.getFullName();
+		return person.getFullName() + ":(" + appoint + ")";
 	}
 
 	@Override

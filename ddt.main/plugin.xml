@@ -5,7 +5,8 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application>
+      <application
+            icon="icons/chamomile16x16.gif">
          <run
                class="org.udiga.ddt.app.Application">
          </run>
@@ -24,6 +25,7 @@
       <view
             category="ddt.views.category"
             class="org.udiga.ddt.view.NavigatorView"
+            icon="icons/chamomile16x16.gif"
             id="ddt.views.navigator"
             name="Navigator"
             restorable="true">

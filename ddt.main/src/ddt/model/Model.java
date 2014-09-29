@@ -6,7 +6,7 @@ public class Model {
 	
 	public static Dept getDeptTree() {
 		
-		System.out.println("Generate Model...");
+		//System.out.println("Generate Model...");
 		Dept d = new Dept("ДДТ");
 		
 		Dept d1 = new Dept("Департ №1");
