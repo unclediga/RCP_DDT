@@ -23,13 +23,13 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		System.out.println("EmpContentProvider.getElements():"+inputElement);
+		//System.out.println("EmpContentProvider.getElements():"+inputElement);
 		return getChildren(inputElement);
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		System.out.println("EmpContentProvider.getChildren():"+parentElement);
+		//System.out.println("EmpContentProvider.getChildren():"+parentElement);
 		if(parentElement instanceof Root){
 			return Model.getRootContent();
 		}else if(parentElement instanceof IModelElement){
@@ -40,7 +40,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
-		System.out.println("EmpContentProvider.getParent():"+element);
+		////System.out.println("EmpContentProvider.getParent():"+element);
 		if(element instanceof IModelElement){
 			return ((IModelElement)element).getParent();
 		}
@@ -49,7 +49,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		System.out.println("EmpContentProvider.hasChildren():"+element);
+		//System.out.println("EmpContentProvider.hasChildren():"+element);
 		if(element instanceof Root){
 			return true;
 		}else if(element instanceof IModelElement){
