@@ -9,7 +9,7 @@ import ddt.model.INavigatorElement;
 public class PersonContentProvider implements ITreeContentProvider {
 
 	private void log(String message) {
-		System.out.println(message);
+		//System.out.println(message);
 	}
 
 	@Override
