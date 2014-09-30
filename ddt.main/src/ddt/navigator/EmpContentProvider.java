@@ -3,6 +3,7 @@ package ddt.navigator;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
+import ddt.model.Dept;
 import ddt.model.INavigatorElement;
 import ddt.model.Model;
 import ddt.model.Root;
@@ -52,7 +53,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 		//System.out.println("EmpContentProvider.hasChildren():"+element);
 		if(element instanceof Root){
 			return true;
-		}else if(element instanceof INavigatorElement){
+		}else if(element instanceof Dept) {
 			return ((INavigatorElement)element).hasChildren();
 		}
 		return false;

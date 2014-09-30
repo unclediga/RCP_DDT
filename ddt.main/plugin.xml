@@ -68,5 +68,21 @@
          </triggerPoints>
       </navigatorContent>
    </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="ddt.navigator.PersonContentProvider"
+            id="ddt.navigator.personContent"
+            labelProvider="ddt.navigator.PersonLabelProvider"
+            name="Persons">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="ddt.model.Emp">
+               </instanceof>
+            </or>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
 
 </plugin>
