@@ -59,7 +59,7 @@
          <triggerPoints>
             <or>
                <instanceof
-                     value="ddt.model.IModelElement">
+                     value="ddt.model.INavigatorElement">
                </instanceof>
                <instanceof
                      value="ddt.model.Root">

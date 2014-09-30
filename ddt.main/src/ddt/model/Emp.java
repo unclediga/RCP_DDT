@@ -1,11 +1,11 @@
 package ddt.model;
 
-public class Emp implements IModelElement {
+public class Emp implements INavigatorElement {
 
 	private Person person;
 	private String appoint;
 
-	private IModelElement parent;
+	private INavigatorElement parent;
 
 	public Emp(Person person, String appoint) {
 		this.person = person;
@@ -17,18 +17,18 @@ public class Emp implements IModelElement {
 	}
 
 	@Override
-	public IModelElement getParent() {
+	public INavigatorElement getParent() {
 		return parent;
 	}
 
 	@Override
-	public void setParent(IModelElement parent) {
+	public void setParent(INavigatorElement parent) {
 		this.parent = parent;
 	}
 
 	@Override
-	public IModelElement[] getChildren() {
-		return new IModelElement[] { person };
+	public INavigatorElement[] getChildren() {
+		return new INavigatorElement[] { person };
 	}
 
 	@Override

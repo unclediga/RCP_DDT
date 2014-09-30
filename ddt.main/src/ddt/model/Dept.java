@@ -3,42 +3,42 @@ package ddt.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dept implements IModelElement {
+public class Dept implements INavigatorElement {
 
-	private IModelElement parent;
+	private INavigatorElement parent;
 	private String name;
-	private List<IModelElement> content;
+	private List<INavigatorElement> content;
 
 	@Override
-	public IModelElement getParent() {
+	public INavigatorElement getParent() {
 		return parent;
 	}
 
 	@Override
-	public void setParent(IModelElement parent) {
+	public void setParent(INavigatorElement parent) {
 		this.parent = parent;
 	}
 
-	public void addElement(IModelElement element) {
+	public void addElement(INavigatorElement element) {
 		content.add(element);
 	}
 
-	public void addElements(IModelElement[] elements) {
+	public void addElements(INavigatorElement[] elements) {
 
-		for (IModelElement e : elements) {
+		for (INavigatorElement e : elements) {
 			content.add(e);
 			e.setParent(this);
 		}
 	}
 
-	public IModelElement[] getChildren() {
+	public INavigatorElement[] getChildren() {
 		/* Нельзя просто
 		 * return (IModelElement[])content.toArray();
 		 * Получишь ClassCastExeption, потому что реально 
 		 * создаётся новый массив Object[] вместо IModelElement[]
 		 * см. JavaDoc 
 		 * */
-		IModelElement[] array = new IModelElement[content.size()];
+		INavigatorElement[] array = new INavigatorElement[content.size()];
 		return content.toArray(array);
 	}
 
@@ -47,16 +47,16 @@ public class Dept implements IModelElement {
 		return content.size() > 0;
 	}
 
-	public Dept(IModelElement[] content) {
+	public Dept(INavigatorElement[] content) {
 
-		for (IModelElement e : content) {
+		for (INavigatorElement e : content) {
 			this.content.add(e);
 		}
 	}
 
 	public Dept(String name) {
 		this.name = name;
-		this.content = new ArrayList<IModelElement>();
+		this.content = new ArrayList<INavigatorElement>();
 	}
 
 	public String getName() {

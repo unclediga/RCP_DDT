@@ -11,7 +11,7 @@ import org.udiga.ddt.app.Activator;
 
 import ddt.model.Dept;
 import ddt.model.Emp;
-import ddt.model.IModelElement;
+import ddt.model.INavigatorElement;
 import ddt.model.Person;
 
 public class EmpLabelProvider extends LabelProvider {
@@ -19,8 +19,8 @@ public class EmpLabelProvider extends LabelProvider {
 	@Override
 	public String getText(Object element) {
 		// System.out.println("EmpLabelProv.getText():"+element);
-		if (element instanceof IModelElement) {
-			return ((IModelElement) element).getLabel();
+		if (element instanceof INavigatorElement) {
+			return ((INavigatorElement) element).getLabel();
 		}
 
 		return super.getText(element);

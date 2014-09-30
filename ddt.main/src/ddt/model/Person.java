@@ -1,22 +1,22 @@
 package ddt.model;
 
-public class Person implements IModelElement {
+public class Person implements INavigatorElement {
 	private String fname;
 	private String mname;
 	private String lname;
 	
 	@Override
-	public IModelElement getParent() {
+	public INavigatorElement getParent() {
 		return null;
 	}
 	
 	@Override
-	public void setParent(IModelElement parent) {
+	public void setParent(INavigatorElement parent) {
 
 	}
 
 	@Override
-	public IModelElement[] getChildren() {
+	public INavigatorElement[] getChildren() {
 		return null;
 	}
 

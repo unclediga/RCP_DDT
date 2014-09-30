@@ -3,7 +3,7 @@ package ddt.navigator;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import ddt.model.IModelElement;
+import ddt.model.INavigatorElement;
 import ddt.model.Model;
 import ddt.model.Root;
 
@@ -32,8 +32,8 @@ public class EmpContentProvider implements ITreeContentProvider {
 		//System.out.println("EmpContentProvider.getChildren():"+parentElement);
 		if(parentElement instanceof Root){
 			return Model.getRootContent();
-		}else if(parentElement instanceof IModelElement){
-			return ((IModelElement)parentElement).getChildren();
+		}else if(parentElement instanceof INavigatorElement){
+			return ((INavigatorElement)parentElement).getChildren();
 		}
 		return null;
 	}
@@ -41,8 +41,8 @@ public class EmpContentProvider implements ITreeContentProvider {
 	@Override
 	public Object getParent(Object element) {
 		////System.out.println("EmpContentProvider.getParent():"+element);
-		if(element instanceof IModelElement){
-			return ((IModelElement)element).getParent();
+		if(element instanceof INavigatorElement){
+			return ((INavigatorElement)element).getParent();
 		}
 		return null;
 	}
@@ -52,8 +52,8 @@ public class EmpContentProvider implements ITreeContentProvider {
 		//System.out.println("EmpContentProvider.hasChildren():"+element);
 		if(element instanceof Root){
 			return true;
-		}else if(element instanceof IModelElement){
-			return ((IModelElement)element).hasChildren();
+		}else if(element instanceof INavigatorElement){
+			return ((INavigatorElement)element).hasChildren();
 		}
 		return false;
 	}

@@ -2,7 +2,7 @@ package ddt.model;
 
 public class Model {
 
-	private static IModelElement[] rootContent = null;
+	private static INavigatorElement[] rootContent = null;
 	
 	public static Dept getDeptTree() {
 		
@@ -13,7 +13,7 @@ public class Model {
 		Dept d2 = new Dept("Департ №2");
 		Dept d3 = new Dept("Департ №3");
 		
-		d.addElements(new IModelElement[]{d1,d2,d3});
+		d.addElements(new INavigatorElement[]{d1,d2,d3});
 		
 		Person p1 = new Person("Иван", "Иванович","Иванов");
 		Person p2 = new Person("Петр", "Петрович","Петров");
@@ -23,7 +23,7 @@ public class Model {
 		Emp e2 = new Emp(p2,"Электрик");
 		Emp e3 = new Emp(p3,"Сантехник");
 		
-		d1.addElements(new IModelElement[]{e1,e2,e3});
+		d1.addElements(new INavigatorElement[]{e1,e2,e3});
 		
 		p1 = new Person("Иван", "Иванович","Иванов2");
 		p2 = new Person("Петр", "Петрович","Петров2");
@@ -33,7 +33,7 @@ public class Model {
 		e3 = new Emp(p3,"Сантехник");
 
 		
-		d2.addElements(new IModelElement[]{e1,e2,e3});
+		d2.addElements(new INavigatorElement[]{e1,e2,e3});
 
 		p1 = new Person("Иван", "Иванович","Иванов3");
 		p2 = new Person("Петр", "Петрович","Петров3");
@@ -42,15 +42,15 @@ public class Model {
 		e2 = new Emp(p2,"Электрик");
 		e3 = new Emp(p3,"Сантехник");
 		
-		d3.addElements(new IModelElement[]{e1,e2,e3});
+		d3.addElements(new INavigatorElement[]{e1,e2,e3});
 		
 		return d;
 	}
 
-	public static IModelElement[] getRootContent() {
+	public static INavigatorElement[] getRootContent() {
 		Dept rootDept =  getDeptTree();
 		if(rootContent == null){
-			rootContent = new IModelElement[] {rootDept};
+			rootContent = new INavigatorElement[] {rootDept};
 		}
 		return rootContent;
 	}
