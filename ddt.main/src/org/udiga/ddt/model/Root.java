@@ -1,4 +1,4 @@
-package ddt.model;
+package org.udiga.ddt.model;
 
 import org.eclipse.core.runtime.PlatformObject;
 

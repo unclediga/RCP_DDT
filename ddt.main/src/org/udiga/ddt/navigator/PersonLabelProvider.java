@@ -1,4 +1,4 @@
-package ddt.navigator;
+package org.udiga.ddt.navigator;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -8,12 +8,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import org.udiga.ddt.app.Activator;
-
-import ddt.model.INavigatorElement;
-import ddt.model.Person;
+import org.udiga.ddt.model.INavigatorElement;
+import org.udiga.ddt.model.Person;
 
 public class PersonLabelProvider extends LabelProvider {
 
+	Image imgPerson = null;
+	
 	@Override
 	public String getText(Object element) {
 		// System.out.println("EmpLabelProv.getText():"+element);
@@ -34,15 +35,28 @@ public class PersonLabelProvider extends LabelProvider {
 	}
 
 	@Override
+	public void dispose() {
+		imgPerson.dispose();
+		super.dispose();
+	}
+
+	@Override
 	public Image getImage(Object element) {
 
 		if (element instanceof Person) {
-			return createImage("man216.png");
+			return imgPerson;
 		}
-		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-		// imageKey = ISharedImages.IMG_OBJ_FOLDER;
+
+		String imageKey = ISharedImages.IMG_OBJS_WARN_TSK;
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 
 	}
 
+	public PersonLabelProvider() {
+		super();
+		imgPerson = createImage("man216.png");
+	}
+
+	
+	
 }

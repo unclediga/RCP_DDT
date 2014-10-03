@@ -1,4 +1,4 @@
-package ddt.navigator;
+package org.udiga.ddt.navigator;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -9,13 +9,16 @@ import org.eclipse.ui.navigator.IDescriptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import org.udiga.ddt.app.Activator;
-
-import ddt.model.Dept;
-import ddt.model.Emp;
-import ddt.model.INavigatorElement;
-import ddt.model.Person;
+import org.udiga.ddt.model.Dept;
+import org.udiga.ddt.model.Emp;
+import org.udiga.ddt.model.INavigatorElement;
+import org.udiga.ddt.model.Person;
 
 public class EmpLabelProvider extends LabelProvider implements IDescriptionProvider {
+	
+	Image imgEmp = null;
+	Image imgDept = null;
+	Image imgDDT = null;
 
 	@Override
 	public String getText(Object element) {
@@ -25,6 +28,16 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 		}
 
 		return super.getText(element);
+	}
+
+	@Override
+	public void dispose() {
+		
+		imgDDT.dispose();
+		imgEmp.dispose();
+		imgDept.dispose();
+
+		super.dispose();
 	}
 
 	private Image createImage(String fileName) {
@@ -41,13 +54,11 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 
 		if (element instanceof Dept) {
 			if (((Dept) element).getParent() == null)
-				return createImage("home16.png");
+				return imgDDT;
 			else
-				return createImage("Binary-tree16.png");
+				return imgDept;
 		} else if (element instanceof Emp) {
-			return createImage("woman16.png");
-		} else if (element instanceof Person) {
-			return createImage("man216.png");
+			return imgEmp;
 		}
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		// imageKey = ISharedImages.IMG_OBJ_FOLDER;
@@ -60,6 +71,13 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 	
 		return ((INavigatorElement)element).getLabel();
 		
+	}
+
+	public EmpLabelProvider() {
+		super();
+		imgEmp = createImage("woman16.png");
+		imgDDT = createImage("home16.png");
+		imgDept = createImage("Binary-tree16.png");
 	}
 
 }

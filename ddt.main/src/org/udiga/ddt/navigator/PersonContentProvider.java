@@ -1,10 +1,10 @@
-package ddt.navigator;
+package org.udiga.ddt.navigator;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import ddt.model.Emp;
-import ddt.model.INavigatorElement;
+import org.udiga.ddt.model.Emp;
+import org.udiga.ddt.model.INavigatorElement;
 
 public class PersonContentProvider implements ITreeContentProvider {
 

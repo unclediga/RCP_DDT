@@ -52,17 +52,17 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
-            contentProvider="ddt.navigator.EmpContentProvider"
+            contentProvider="org.udiga.ddt.navigator.EmpContentProvider"
             id="ddt.navigator.empContent"
-            labelProvider="ddt.navigator.EmpLabelProvider"
+            labelProvider="org.udiga.ddt.navigator.EmpLabelProvider"
             name="Emp content">
          <triggerPoints>
             <or>
                <instanceof
-                     value="ddt.model.INavigatorElement">
+                     value="org.udiga.ddt.model.INavigatorElement">
                </instanceof>
                <instanceof
-                     value="ddt.model.Root">
+                     value="org.udiga.ddt.model.Root">
                </instanceof>
             </or>
          </triggerPoints>
@@ -71,18 +71,55 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
-            contentProvider="ddt.navigator.PersonContentProvider"
+            contentProvider="org.udiga.ddt.navigator.PersonContentProvider"
             id="ddt.navigator.personContent"
-            labelProvider="ddt.navigator.PersonLabelProvider"
+            labelProvider="org.udiga.ddt.navigator.PersonLabelProvider"
             name="Persons">
          <triggerPoints>
             <or>
                <instanceof
-                     value="ddt.model.Emp">
+                     value="org.udiga.ddt.model.Emp">
                </instanceof>
             </or>
          </triggerPoints>
       </navigatorContent>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ddt.views.perspective">
+         <view
+               id="ddt.views.test1"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.PropertySheet"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="ddt.views.perspective">
+         <view
+               id="ddt.views.test1"
+               minimized="false"
+               ratio="0.25"
+               relationship="right"
+               relative="org.eclipse.ui.editorss"
+               showTitle="true"
+               visible="true">
+         </view>
+         <view
+               id="org.eclipse.ui.views.PropertySheet"
+               minimized="false"
+               ratio="0.5"
+               relationship="bottom"
+               relative="ddt.views.test1"
+               showTitle="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   -->
 </plugin>

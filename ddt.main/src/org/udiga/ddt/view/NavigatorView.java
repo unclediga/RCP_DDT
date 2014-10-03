@@ -7,7 +7,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 
-import ddt.model.Root;
+import org.udiga.ddt.model.Root;
 
 public class NavigatorView extends CommonNavigator {
 
