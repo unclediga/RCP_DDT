@@ -5,6 +5,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.IDescriptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import org.udiga.ddt.app.Activator;
@@ -14,7 +15,7 @@ import ddt.model.Emp;
 import ddt.model.INavigatorElement;
 import ddt.model.Person;
 
-public class EmpLabelProvider extends LabelProvider {
+public class EmpLabelProvider extends LabelProvider implements IDescriptionProvider {
 
 	@Override
 	public String getText(Object element) {
@@ -52,6 +53,13 @@ public class EmpLabelProvider extends LabelProvider {
 		// imageKey = ISharedImages.IMG_OBJ_FOLDER;
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 
+	}
+
+	@Override
+	public String getDescription(Object element) {
+	
+		return ((INavigatorElement)element).getLabel();
+		
 	}
 
 }
