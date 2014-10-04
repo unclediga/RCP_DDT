@@ -23,6 +23,9 @@ public class NavigatorView extends CommonNavigator {
 
 		super.createPartControl(aParent);
 		
+		// делаем источнмком для других вьюшек
+		getSite().setSelectionProvider(getCommonViewer());
+		
 		final CommonViewer viewer = super.getCommonViewer();
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 			
