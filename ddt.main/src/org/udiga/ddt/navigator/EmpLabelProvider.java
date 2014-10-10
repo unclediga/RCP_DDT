@@ -20,9 +20,13 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 	Image imgDept = null;
 	Image imgDDT = null;
 
+	private void log(String message) {
+		System.out.println(this.getClass().getSimpleName() + "."+message);
+	}
+
 	@Override
 	public String getText(Object element) {
-		// System.out.println("EmpLabelProv.getText():"+element);
+		log("getText() <- "+element);
 		if (element instanceof INavigatorElement) {
 			return ((INavigatorElement) element).getLabel();
 		}
@@ -51,6 +55,8 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 
 	@Override
 	public Image getImage(Object element) {
+
+		log("getImage() <- "+element);
 
 		if (element instanceof Dept) {
 			if (((Dept) element).getParent() == null)

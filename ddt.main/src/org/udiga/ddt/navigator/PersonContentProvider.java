@@ -9,7 +9,7 @@ import org.udiga.ddt.model.INavigatorElement;
 public class PersonContentProvider implements ITreeContentProvider {
 
 	private void log(String message) {
-		//System.out.println(message);
+		System.out.println(this.getClass().getSimpleName() + "."+message);
 	}
 
 	@Override
@@ -20,13 +20,12 @@ public class PersonContentProvider implements ITreeContentProvider {
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// TODO Auto-generated method stub
-
+		log("inputChanged()");
 	}
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		log("PersonContentProvider.getElements():"+inputElement);
+		log("getElements() <- "+inputElement);
 		if(inputElement instanceof Emp){
 			return getChildren(inputElement);
 		}
@@ -36,7 +35,7 @@ public class PersonContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		log("PersonContentProvider.getChildren():"+parentElement);
+		log("getChildren() <- "+parentElement);
 		if(parentElement instanceof Emp){
 			return new Object[]{((Emp) parentElement).getPerson()};
 		}
@@ -45,7 +44,7 @@ public class PersonContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
-		log("PersonContentProvider.getParent():"+element);
+		log("getParent() <- "+element);
 		if(element instanceof INavigatorElement){
 			return ((INavigatorElement)element).getParent();
 		}
@@ -54,7 +53,7 @@ public class PersonContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		log("PersonContentProvider.hasChildren():"+element);
+		log("hasChildren() <- "+element);
 		if(element instanceof Emp){
 			return ((Emp) element).getPerson() != null;
 		}

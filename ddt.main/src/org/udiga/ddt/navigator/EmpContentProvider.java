@@ -11,7 +11,7 @@ import org.udiga.ddt.model.Root;
 public class EmpContentProvider implements ITreeContentProvider {
 
 	private void log(String message) {
-		//System.out.println(message);
+		System.out.println(this.getClass().getSimpleName() + "."+message);
 	}
 
 	@Override
@@ -22,19 +22,18 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// TODO Auto-generated method stub
-
+		log("inputChanged()");
 	}
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		log("EmpContentProvider.getElements():"+inputElement);
+		log("getElements() <- "+inputElement);
 		return getChildren(inputElement);
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		log("EmpContentProvider.getChildren():"+parentElement);
+		log("getChildren() <- "+parentElement);
 		if(parentElement instanceof Root){
 			return Model.getRootContent();
 		}else if(parentElement instanceof INavigatorElement){
@@ -45,7 +44,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object getParent(Object element) {
-		log("EmpContentProvider.getParent():"+element);
+		log("getParent() <- "+element);
 		if(element instanceof INavigatorElement){
 			return ((INavigatorElement)element).getParent();
 		}
@@ -54,7 +53,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object element) {
-		log("EmpContentProvider.hasChildren():"+element);
+		log("hasChildren() <- "+element);
 		if(element instanceof Root){
 			return true;
 		}else if(element instanceof Dept) {

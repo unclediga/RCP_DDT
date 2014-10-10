@@ -14,10 +14,14 @@ import org.udiga.ddt.model.Person;
 public class PersonLabelProvider extends LabelProvider {
 
 	Image imgPerson = null;
+
+	private void log(String message) {
+		System.out.println(this.getClass().getSimpleName() + "."+message);
+	}
 	
 	@Override
 	public String getText(Object element) {
-		// System.out.println("EmpLabelProv.getText():"+element);
+		log("getText() <- "+element);
 		if (element instanceof INavigatorElement) {
 			return ((INavigatorElement) element).getLabel();
 		}
@@ -43,10 +47,11 @@ public class PersonLabelProvider extends LabelProvider {
 	@Override
 	public Image getImage(Object element) {
 
+		log("getImage() <- "+element);
+
 		if (element instanceof Person) {
 			return imgPerson;
 		}
-
 		String imageKey = ISharedImages.IMG_OBJS_WARN_TSK;
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 
