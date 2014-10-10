@@ -4,6 +4,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 import org.udiga.ddt.model.Dept;
+import org.udiga.ddt.model.Emp;
 import org.udiga.ddt.model.INavigatorElement;
 import org.udiga.ddt.model.Model;
 import org.udiga.ddt.model.Root;
@@ -36,7 +37,7 @@ public class EmpContentProvider implements ITreeContentProvider {
 		log("getChildren() <- "+parentElement);
 		if(parentElement instanceof Root){
 			return Model.getRootContent();
-		}else if(parentElement instanceof INavigatorElement){
+		}else if(parentElement instanceof Dept){
 			return ((INavigatorElement)parentElement).getChildren();
 		}
 		return null;
@@ -54,12 +55,16 @@ public class EmpContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) {
 		log("hasChildren() <- "+element);
+		boolean res = false;
 		if(element instanceof Root){
-			return true;
-		}else if(element instanceof Dept) {
-			return ((INavigatorElement)element).hasChildren();
+			res = true;
+		}else if(element instanceof Emp){
+			res = false;
+		}else if(element instanceof INavigatorElement) {
+			res = ((INavigatorElement)element).hasChildren();
 		}
-		return false;
+		log("res ->" + res);
+		return res;
 	}
 
 }

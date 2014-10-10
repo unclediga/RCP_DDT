@@ -9,7 +9,7 @@ import org.udiga.ddt.model.INavigatorElement;
 public class PersonContentProvider implements ITreeContentProvider {
 
 	private void log(String message) {
-		System.out.println(this.getClass().getSimpleName() + "."+message);
+		System.out.println(this.getClass().getSimpleName() + "." + message);
 	}
 
 	@Override
@@ -25,39 +25,41 @@ public class PersonContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		log("getElements() <- "+inputElement);
-		if(inputElement instanceof Emp){
+		log("getElements() <- " + inputElement);
+		if (inputElement instanceof Emp) {
 			return getChildren(inputElement);
 		}
 		return null;
-		
+
 	}
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		log("getChildren() <- "+parentElement);
-		if(parentElement instanceof Emp){
-			return new Object[]{((Emp) parentElement).getPerson()};
+		log("getChildren() <- " + parentElement);
+		if (parentElement instanceof Emp) {
+			return new Object[] { ((Emp) parentElement).getPerson() };
 		}
 		return null;
 	}
 
 	@Override
 	public Object getParent(Object element) {
-		log("getParent() <- "+element);
-		if(element instanceof INavigatorElement){
-			return ((INavigatorElement)element).getParent();
+		log("getParent() <- " + element);
+		if (element instanceof INavigatorElement) {
+			return ((INavigatorElement) element).getParent();
 		}
 		return null;
 	}
 
 	@Override
 	public boolean hasChildren(Object element) {
-		log("hasChildren() <- "+element);
-		if(element instanceof Emp){
-			return ((Emp) element).getPerson() != null;
+		log("hasChildren() <- " + element);
+		boolean res = false;
+		if (element instanceof Emp) {
+			res = ((Emp) element).getPerson() != null;
 		}
-		return false;
+		log("res -> " + res);
+		return res;
 	}
 
 }

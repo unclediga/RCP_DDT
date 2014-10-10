@@ -69,7 +69,6 @@ public class EmpLabelProvider extends LabelProvider implements IDescriptionProvi
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		// imageKey = ISharedImages.IMG_OBJ_FOLDER;
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
-
 	}
 
 	@Override
