@@ -59,9 +59,6 @@
          <triggerPoints>
             <or>
                <instanceof
-                     value="org.udiga.ddt.model.INavigatorElement">
-               </instanceof>
-               <instanceof
                      value="org.udiga.ddt.model.Root">
                </instanceof>
             </or>
