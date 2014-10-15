@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Db
+Bundle-SymbolicName: ddt.db;singleton:=true
+Bundle-Version: 1.0.0.0
+Bundle-Activator: ddt.db.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
