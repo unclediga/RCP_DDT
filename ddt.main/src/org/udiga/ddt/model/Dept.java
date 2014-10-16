@@ -6,6 +6,7 @@ import java.util.List;
 public class Dept implements INavigatorElement {
 
 	private INavigatorElement parent;
+	private Integer id;
 	private String name;
 	private List<INavigatorElement> content;
 
@@ -32,12 +33,11 @@ public class Dept implements INavigatorElement {
 	}
 
 	public INavigatorElement[] getChildren() {
-		/* Нельзя просто
-		 * return (IModelElement[])content.toArray();
-		 * Получишь ClassCastExeption, потому что реально 
-		 * создаётся новый массив Object[] вместо IModelElement[]
-		 * см. JavaDoc 
-		 * */
+		/*
+		 * Нельзя просто return (IModelElement[])content.toArray(); Получишь
+		 * ClassCastExeption, потому что реально создаётся новый массив Object[]
+		 * вместо IModelElement[] см. JavaDoc
+		 */
 		INavigatorElement[] array = new INavigatorElement[content.size()];
 		return content.toArray(array);
 	}
@@ -54,9 +54,18 @@ public class Dept implements INavigatorElement {
 		}
 	}
 
-	public Dept(String name) {
+	public Dept(Integer id, String name) {
+		this.id = id;
 		this.name = name;
 		this.content = new ArrayList<INavigatorElement>();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -70,7 +79,7 @@ public class Dept implements INavigatorElement {
 
 	@Override
 	public String toString() {
-		return "DEPT:" + name;
+		return "DEPT:" + id + ":" + name;
 	}
 
 }

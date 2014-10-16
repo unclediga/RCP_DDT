@@ -1,15 +1,25 @@
 package org.udiga.ddt.model;
 
 public class Person implements INavigatorElement {
+	private Integer id;
 	private String fname;
 	private String mname;
 	private String lname;
 	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public INavigatorElement getParent() {
 		return null;
 	}
 	
+
 	@Override
 	public void setParent(INavigatorElement parent) {
 
@@ -46,8 +56,9 @@ public class Person implements INavigatorElement {
 	public String getFullName() {
 		return ""+getLname()+" "+getFname()+" "+getMname();
 	}
-	public Person(String fname, String mname, String lname) {
+	public Person(Integer id, String fname, String mname, String lname) {
 		super();
+		this.id = id;
 		this.fname = fname;
 		this.mname = mname;
 		this.lname = lname;
@@ -59,7 +70,15 @@ public class Person implements INavigatorElement {
 	
 	@Override
 	public String toString() {
-		return "PERS:" + getFullName();
+		return "PERS:"+id + ":" + getFullName();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Person){
+			return id.intValue() == ((Person)obj).getId().intValue();
+		}
+		return false;
 	}
 	
 }
